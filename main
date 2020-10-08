@@ -1,0 +1,50 @@
+import 'package:flutter/material.dart';
+import 'package:meals_app/meals_screen.dart';
+
+import 'category_screen.dart';
+
+void main() => runApp(MealsApp());
+
+class MealsApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: "DeliMeals",
+      theme: ThemeData(
+        primarySwatch: Colors.red,
+        accentColor: Colors.yellow,
+        canvasColor: Colors.yellow[50],
+        fontFamily: "Raleway",
+      ),
+      home: CategoryScreen(),
+      routes: {MealScreen.route: (ctx) => MealScreen()},
+      onGenerateRoute: (settings) {
+        print(settings.arguments);
+        return MaterialPageRoute(builder: (ctx) => CategoryScreen());
+      },
+      onUnknownRoute: (settings) {
+        print(settings.arguments);
+        return MaterialPageRoute(builder: (ctx) => CategoryScreen());
+      },
+    );
+  }
+}
+
+class HomePage extends StatefulWidget {
+  @override
+  _HomePageState createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("DeliMeals"),
+      ),
+      body: Center(
+        child: Text("Sup"),
+      ),
+    );
+  }
+}
